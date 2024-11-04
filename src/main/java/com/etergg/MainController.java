@@ -21,13 +21,16 @@ public class MainController {
         return "contact";
     }
 
-    @GetMapping("/projects")
-    public String projects(){
-        return "projects";
-    }
-
+    // 구인 찾기
     @GetMapping("/resume")
     public String resume(){
         return "resume";
     }
+
+//    @GetMapping("/projects")
+//    public String projects(){
+//        return "projects";
+//    }
+
+
 }

@@ -27,43 +27,37 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" th:href="@{/}" >메인</a></li>
-                            <li class="nav-item"><a class="nav-link" th:href="@{/resume}">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" th:href="@{/projects}">Projects</a></li>
                             <li class="nav-item"><a class="nav-link" th:href="@{/contact}">구인 등록</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/resume}">구인 찾기</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
             <!-- Header-->
             <header class="py-5">
-                <div class="container px-5 pb-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-xxl-5">
-                            <!-- Header text content-->
-                            <div class="text-center text-xxl-start">
-                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">듀오 &middot; 스쿼드 &middot; 친구 구하기</div></div>
-                                <div class="fs-3 fw-light text-muted">이터널리턴 커뮤니티 - ER community</div>
-                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">
-                                    Welcome to ER community</span></h1>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" th:href="@{/contact}">구인 등록</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" th:href="@{/projects}">구인 찾기</a>
-                                </div>
+                <div class="row gx-5 align-items-center">
+                    <div class="col-xxl-5" style="margin-left: 400px;">
+                        <div class="text-center text-xxl-start">
+                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
+                                <div class="text-uppercase">듀오 &middot; 스쿼드 &middot; 친구 구하기</div>
                             </div>
-                        </div>
-                        <div class="col-xxl-7">
-                            <!-- Header profile picture-->
-                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                                <div class="profile bg-gradient-primary-to-secondary">
-                                    <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                    <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                    <img class="profile-img" src="main.png" alt="..." />
-                                    </div>
-
-                                </div>
+                            <div class="fs-3 fw-light text-muted">이터널리턴 커뮤니티 - ER community</div>
+                            <h1 class="display-3 fw-bolder mb-5">
+                                <span class="text-gradient d-inline">Welcome to ER community</span>
+                            </h1>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-center mb-3">
+                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" th:href="@{/contact}">구인 등록</a>
+                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" th:href="@{/resume}">구인 찾기</a>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xxl-7" style="margin-left: 500px;">
+                        <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                                <img class="profile-img" src="main.png" alt="..." style="width: 100%; height: 50%"/>
+                        </div>
+                    </div>
+                </div>
+
                 </div>
             </header>
             <!-- About Section-->

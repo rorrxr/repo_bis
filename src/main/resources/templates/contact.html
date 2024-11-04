@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content />
         <meta name="author" content />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>이터널리턴 커뮤니티 - ER community</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Custom Google font-->
@@ -22,14 +22,13 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div class="container px-5">
-                    <a class="navbar-brand" th:href="@{/}"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+                    <a class="navbar-brand" th:href="@{/}"><span class="fw-bolder text-primary">ER community</span></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" th:href="@{/}" >메인</a></li>
-                            <li class="nav-item"><a class="nav-link" th:href="@{/resume}">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" th:href="@{/projects}">Projects</a></li>
                             <li class="nav-item"><a class="nav-link" th:href="@{/contact}">구인 등록</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/resume}">구인 찾기</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,30 +53,61 @@
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                    <!-- Name input-->
+                                    <!-- 닉네임-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                         <label for="name">닉네임</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">닉네임을 입력해주세요</div>
                                     </div>
-                                    <!-- Email address input-->
+                                    <!-- 티어-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option value="1">아이언</option>
+                                            <option value="2">브론즈</option>
+                                            <option value="3">실버</option>
+                                            <option value="4">골드</option>
+                                            <option value="5">플레티넘</option>
+                                            <option value="6">다이아몬드</option>
+                                            <option value="7">메테오라이트</option>
+                                            <option value="8">미스릴</option>
+                                            <option value="9">데미갓</option>
+                                            <option value="10">이터니티</option>
+                                        </select>
                                         <label for="email">티어</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                        <div class="invalid-feedback" data-sb-feedback="email:required">티어를 입력해주세요</div>
                                     </div>
-                                    <!-- Phone number input-->
+                                    <!-- 모스트-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                        <label for="phone">구인 형태(일반/랭크)</label>
-                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..."  />
+                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..."  />
+
+                                        <label for="name">모스트</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">모스트를 입력해주세요</div>
                                     </div>
-                                    <!-- Message input-->
+                                    <!-- 구인 형태 -->
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected style="display:none">일반/랭크/코발트</option>
+                                            <option value="1">일반</option>
+                                            <option value="2">랭크</option>
+                                            <option value="3">코발트</option>
+                                        </select>
+                                        <label for="selected-join">구인 형태(일반/랭크)</label>
+                                        <div class="invalid-feedback" data-sb-feedback="selected-join:required">구인 형태를 선택해주세요</div>
+                                    </div>
+
+                                    <!-- 나이 선택 (성별처럼 성인/미성년/비밀) -->
+                                    <!-- 성별 선택 (성별 성인/미성년/비밀)-->
+                                    <!-- 파티 분위기 (빡겜/즐겜)-->
+                                    <!-- 시간대 (새벽/아침/ 낮 /저녁 / 밤 / 평일 / 주말 / 랜덤)-->
+
+
+                                    <!-- 메시지 -->
                                     <div class="form-floating mb-3">
                                         <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                         <label for="message">메시지</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                        <div class="invalid-feedback" data-sb-feedback="message:required">메시지를 입력해주세요</div>
                                     </div>
                                     <!-- Submit success message-->
                                     <!---->
@@ -97,7 +127,7 @@
                                     <!-- an error submitting the form-->
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">등록</button></div>
                                 </form>
                             </div>
                         </div>
@@ -110,13 +140,6 @@
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                     <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="#!">Privacy</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Terms</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Contact</a>
-                    </div>
                 </div>
             </div>
         </footer>
