@@ -15,6 +15,7 @@ public class MainController {
         return "index";
     }
 
+    // 구인 등록
     @GetMapping("/contact")
     public String contact(){
         return "contact";
