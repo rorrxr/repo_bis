@@ -36,5 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
-**/application-external.properties
-**/application.properties
+
+
+application.properties
+application-API-KEY.properties
