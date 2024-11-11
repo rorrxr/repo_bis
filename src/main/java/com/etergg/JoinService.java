@@ -13,7 +13,7 @@ public class JoinService {
 
     // 구인 등록을 위한 메서드
     public void join(JoinDto dto) {
-        dao.join(dto);  // DB에 구인 등록
+        dao.insert(dto);  // DB에 구인 등록
     }
 
     // 구인 목록 조회

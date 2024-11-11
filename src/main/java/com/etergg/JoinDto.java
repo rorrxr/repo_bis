@@ -10,14 +10,14 @@ import java.util.List;
 public class JoinDto {
 
     String userNickname;
-    String userRank;
+    int userRank;
     String userMost1;
     String userMost2;
     String userMost3;
-    String joinCategory;
+    int joinCategory;
     String joinMessage;
     String joinCreateDate;
-    String delYn;
+    int delYn;
 
     @Override
     public String toString() {

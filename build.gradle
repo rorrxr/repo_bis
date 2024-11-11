@@ -37,6 +37,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Jackson 라이브러리 (JSON 파싱을 위한 라이브러리)
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// Lombok (선택 사항, 이미 사용 중이라면 유지)
+	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {

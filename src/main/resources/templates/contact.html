@@ -126,6 +126,48 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        // 회원가입 버튼 클릭 시 폼을 제출하도록 설정-->
+<!--        $("#submitButton").click(function(event){-->
+<!--            event.preventDefault();  // 기본 submit 동작을 막음-->
+
+<!--            // 폼 데이터를 객체로 구성-->
+<!--            var formData = {-->
+<!--                userNickname: $("#userNickname").val(),-->
+<!--                userRank: $("#userRank").val(),-->
+<!--                userMost1: $("#userMost1").val(),-->
+<!--                userMost2: $("#userMost2").val(),-->
+<!--                userMost3: $("#userMost3").val(),-->
+<!--                joinCategory: $("#joinCategory").val(),-->
+<!--                joinMessage: $("#joinMessage").val()-->
+<!--            };-->
+
+<!--            // AJAX를 사용하여 폼 데이터를 전송-->
+<!--            $.ajax({-->
+<!--                url: "/contact",  // 서버의 URL-->
+<!--                type: "POST",  // HTTP 메소드-->
+<!--                contentType: "application/json",  // 전송 데이터 형식-->
+<!--                data: JSON.stringify(formData),  // 데이터는 JSON 형식으로 변환-->
+<!--                success: function(response) {-->
+<!--                    if (response.success) {-->
+<!--                        $("#submitSuccessMessage").removeClass("d-none");-->
+<!--                        $("#submitErrorMessage").addClass("d-none");-->
+<!--                    } else {-->
+<!--                        $("#submitErrorMessage").removeClass("d-none");-->
+<!--                        $("#submitSuccessMessage").addClass("d-none");-->
+<!--                    }-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                    $("#submitErrorMessage").removeClass("d-none");-->
+<!--                    $("#submitSuccessMessage").addClass("d-none");-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+
+
+<!--</script>-->
 <script>
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();  // 기본 제출 동작을 막음
@@ -147,7 +189,7 @@
         // 서버로 JSON 데이터를 전송
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/contact', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형식으로 전송
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -173,7 +215,7 @@
         // JSON 데이터를 서버로 전송
         xhr.send(JSON.stringify(formData));
     });
-
 </script>
+
 </body>
 </html>
