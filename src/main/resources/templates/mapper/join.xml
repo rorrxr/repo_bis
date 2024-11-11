@@ -7,7 +7,7 @@
 
     <select id = "user">
         SELECT *
-        FROM user
+        FROM userJoin
     </select>
 
     <insert id="join">

@@ -19,4 +19,16 @@ public class JoinDto {
     String joinCreateDate;
     String delYn;
 
+    @Override
+    public String toString() {
+        return "JoinDto{" +
+                "userNickname='" + userNickname + '\'' +
+                ", userRank='" + userRank + '\'' +
+                ", userMost1='" + userMost1 + '\'' +
+                ", userMost2='" + userMost2 + '\'' +
+                ", userMost3='" + userMost3 + '\'' +
+                ", joinCategory='" + joinCategory + '\'' +
+                ", joinMessage='" + joinMessage + '\'' +
+                '}';
+    }
 }

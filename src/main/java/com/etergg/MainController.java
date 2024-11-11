@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class MainController {
@@ -28,17 +29,12 @@ public class MainController {
         return "resume";
     }
 
-//    @GetMapping("/projects")
-//    public String projects(){
-//        return "projects";
-//    }
-
+    // 구인 등록 처리
     @PostMapping(value = "/contact")
-    public String joinInsert(JoinDto dto) throws Exception{
-        service.join(dto); // 서비스의 insert 호출
+    public String joinInsert(@RequestBody JoinDto dto) throws Exception {
+        service.join(dto); // 서비스의 join 호출
+        System.out.println("Received data: " + dto.toString());
 
-        return "redirect:/"; // 이전 페이지로
+        return "redirect:/"; // 이전 페이지로 리다이렉트
     }
-
-
 }
