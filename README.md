@@ -1,5 +1,5 @@
 # 이터널리턴 커뮤니티
-개발환경 : SpringBoot, HTML, JavaScript, Bootstrap, Thymeleaf, MariaDB
+개발환경 : SpringBoot, Mybatis, HTML, JavaScript/jquery, Bootstrap, Thymeleaf, MariaDB, DBeaver
 
 # 프로젝트 소개
 이터널리턴은 리그 오브 레전드와 같은 AOS 장르의 3인 스쿼드 게임입니다. 따라서 혼자서 하는 사람들이 친구를 구하는 커뮤니티는 적은 편에 속합니다.
@@ -10,7 +10,8 @@
 - 구인 찾기
 
 # 추가 기능 구현 중
-- 로그인/회원가입 구현
+- 관리자 로그인 및 권한 부여 (관리자만 삭제 가능)
+- 회원 로그인/회원가입 구현
 - 카카오/네이버 로그인 구현
-- 이터널리턴 공식 API 사용하기
-- AWS를 사용하여 배포하기
+- 이터널리턴 공식 API 사용하기 (key 발급 완료) : 전적 검색 기능 추가
+- 추후 AWS를 사용하여 배포하기
