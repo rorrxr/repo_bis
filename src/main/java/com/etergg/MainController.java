@@ -1,18 +1,10 @@
 package com.etergg;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-
-    @Autowired
-    JoinService joinService;
-
     @GetMapping("/")
     public String index(){
         return "index";
@@ -29,12 +21,4 @@ public class MainController {
     public String resume(){
         return "resume";
     }
-
-    @PostMapping("/contact")
-    public String joinInsert(@ModelAttribute JoinDto dto) throws Exception{ // dto
-        joinService.insert(dto);
-
-        return "redirect:/"; // 리턴할 html 리스트 페이지로
-    }
-
 }
