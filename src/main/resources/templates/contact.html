@@ -125,97 +125,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-
-<!--<script>-->
-<!--    $(document).ready(function(){-->
-<!--        // 회원가입 버튼 클릭 시 폼을 제출하도록 설정-->
-<!--        $("#submitButton").click(function(event){-->
-<!--            event.preventDefault();  // 기본 submit 동작을 막음-->
-
-<!--            // 폼 데이터를 객체로 구성-->
-<!--            var formData = {-->
-<!--                userNickname: $("#userNickname").val(),-->
-<!--                userRank: $("#userRank").val(),-->
-<!--                userMost1: $("#userMost1").val(),-->
-<!--                userMost2: $("#userMost2").val(),-->
-<!--                userMost3: $("#userMost3").val(),-->
-<!--                joinCategory: $("#joinCategory").val(),-->
-<!--                joinMessage: $("#joinMessage").val()-->
-<!--            };-->
-
-<!--            // AJAX를 사용하여 폼 데이터를 전송-->
-<!--            $.ajax({-->
-<!--                url: "/contact",  // 서버의 URL-->
-<!--                type: "POST",  // HTTP 메소드-->
-<!--                contentType: "application/json",  // 전송 데이터 형식-->
-<!--                data: JSON.stringify(formData),  // 데이터는 JSON 형식으로 변환-->
-<!--                success: function(response) {-->
-<!--                    if (response.success) {-->
-<!--                        $("#submitSuccessMessage").removeClass("d-none");-->
-<!--                        $("#submitErrorMessage").addClass("d-none");-->
-<!--                    } else {-->
-<!--                        $("#submitErrorMessage").removeClass("d-none");-->
-<!--                        $("#submitSuccessMessage").addClass("d-none");-->
-<!--                    }-->
-<!--                },-->
-<!--                error: function() {-->
-<!--                    $("#submitErrorMessage").removeClass("d-none");-->
-<!--                    $("#submitSuccessMessage").addClass("d-none");-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    });-->
-
-
-<!--</script>-->
 <script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // 기본 제출 동작을 막음
 
-        // 폼 데이터를 JSON으로 변환
-        var formData = {
-            userNickname: document.getElementById('userNickname').value,
-            userRank: document.getElementById('userRank').value,
-            userMost1: document.getElementById('userMost1').value,
-            userMost2: document.getElementById('userMost2').value,
-            userMost3: document.getElementById('userMost3').value,
-            joinCategory: document.getElementById('joinCategory').value,
-            joinMessage: document.getElementById('joinMessage').value
-        };
+    let form = document.querySelector("form[name=contactForm]");
 
-        // 콘솔로 전송되는 데이터 확인
-        console.log("Form Data:", formData);
+    let goUrlXdmInst = "/insert";
 
-        // 서버로 JSON 데이터를 전송
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/contact', true);
-        xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형식으로 전송
+    document.getElementById("btnSubmit").onclick = function () {
+        if(validationInst() == false){  // 밸리데이션 체크
+            return false;
+        } else {
+            form.action = goUrlXdmInst;
+            form.submit();
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        // 성공 메시지
-                        document.getElementById('submitSuccessMessage').classList.remove('d-none');
-                        document.getElementById('submitErrorMessage').classList.add('d-none');
-                    } else {
-                        // 실패 메시지
-                        document.getElementById('submitErrorMessage').classList.remove('d-none');
-                        document.getElementById('submitSuccessMessage').classList.add('d-none');
-                    }
-                } else {
-                    // 서버 오류 시 에러 메시지
-                    document.getElementById('submitErrorMessage').classList.remove('d-none');
-                    document.getElementById('submitSuccessMessage').classList.add('d-none');
-                }
-            }
-        };
-
-        // JSON 데이터를 서버로 전송
-        xhr.send(JSON.stringify(formData));
-    });
+        }
+    }
 </script>
-
 </body>
 </html>

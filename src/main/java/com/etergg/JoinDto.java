@@ -16,7 +16,7 @@ public class JoinDto {
     String userMost3;
     int joinCategory;
     String joinMessage;
-    String joinCreateDate;
+    String createDate;
     int delYn;
 
     @Override
