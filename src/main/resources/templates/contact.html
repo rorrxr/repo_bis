@@ -90,6 +90,11 @@
                                 <label for="joinMessage">메시지</label>
                             </div>
 
+<!--
+                            <input class="form-control" id="delYn" name="delYn" type="hidden"/>
+                            <input class="form-control" id="createDate" name="createDate" type="hidden"/>
+-->
+
                             <!-- Submit Button-->
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-lg" id="submitButton" type="submit">등록</button>
@@ -129,7 +134,7 @@
 
     let form = document.querySelector("form[name=contactForm]");
 
-    let goUrlXdmInst = "/insert";
+    let goUrlXdmInst = "/contact";
 
     document.getElementById("btnSubmit").onclick = function () {
         if(validationInst() == false){  // 밸리데이션 체크

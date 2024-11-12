@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.etergg.JoinDao">
+    <insert id="insert">
+        INSERT INTO userJoin (
+            userNickname,
+            userRank,
+            userMost1,
+            userMost2,
+            userMost3,
+            joinCategory,
+            joinMessage
+        ) VALUES (
+         #{userNickname},
+         #{userRank},
+         #{userMost1},
+         #{userMost2},
+         #{userMost3},
+         #{joinCategory},
+         #{joinMessage}
+     )
+    </insert>
+
+    <!--    <update id="update">-->
+    <!--        UPDATE userJoin-->
+    <!--        set userNickname = #{userNickname}-->
+    <!--        where idx = #{idx}-->
+    <!--    </update>-->
+
+    <!--    <update id="updateDelete">-->
+    <!--        UPDATE userJoin-->
+    <!--        set delYn = 1-->
+    <!--        where idx = #{idx}-->
+    <!--    </update>-->
+
+</mapper>

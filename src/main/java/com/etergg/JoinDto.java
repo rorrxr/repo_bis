@@ -3,32 +3,32 @@ package com.etergg;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 public class JoinDto {
 
-    String userNickname;
-    int userRank;
-    String userMost1;
-    String userMost2;
-    String userMost3;
-    int joinCategory;
-    String joinMessage;
-    String createDate;
-    int delYn;
+    private String userNickname;
+    private int userRank;
+    private String userMost1;
+    private String userMost2;
+    private String userMost3;
+    private int joinCategory;
+    private String joinMessage;
+    private String createDate;
+    private int delYn;
 
     @Override
     public String toString() {
         return "JoinDto{" +
                 "userNickname='" + userNickname + '\'' +
-                ", userRank='" + userRank + '\'' +
+                ", userRank=" + userRank +
                 ", userMost1='" + userMost1 + '\'' +
                 ", userMost2='" + userMost2 + '\'' +
                 ", userMost3='" + userMost3 + '\'' +
-                ", joinCategory='" + joinCategory + '\'' +
+                ", joinCategory=" + joinCategory +
                 ", joinMessage='" + joinMessage + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", delYn=" + delYn +
                 '}';
     }
 }

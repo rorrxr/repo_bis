@@ -30,11 +30,11 @@ public class MainController {
         return "resume";
     }
 
-    @PostMapping(value = "/contact")
-    public String joinInsert(JoinDto dto) throws Exception{ // dto
+    @PostMapping("/contact")
+    public String joinInsert(@ModelAttribute JoinDto dto) throws Exception{ // dto
         joinService.insert(dto);
 
-        return "redirect:/contact"; // 리턴할 html 리스트 페이지로
+        return "redirect:/"; // 리턴할 html 리스트 페이지로
     }
 
 }

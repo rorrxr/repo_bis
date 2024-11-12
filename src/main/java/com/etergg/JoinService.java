@@ -2,14 +2,13 @@ package com.etergg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
 public class JoinService {
 
     @Autowired
-    private JoinDao dao;
+    public JoinDao dao;
 
     // 구인 등록을 위한 메서드
     public void insert(JoinDto dto) {
