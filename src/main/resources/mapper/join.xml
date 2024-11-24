@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.etergg.UserJoin.UserJoinDao">
-    <!-- useGeneratedKeys(default: false) : insert나 update됨가 동시에 자동생성된 키를 가져올 수 있는 속성 -->
-    <!-- keyProperty : 리턴 될 key property 설정. -->
-    <insert id="insert" parameterType="UserJoin" userGeneratedKeys="true" keyProperty="id">
+<mapper namespace="com.etergg.dao.UserJoinDao">
+
+    <insert id="insert">
         INSERT INTO USER_JOIN (
             USER_NICKNAME,
             USER_RANK,
@@ -14,13 +13,13 @@
             JOIN_CATEGORY,
             JOIN_MESSAGE
         ) VALUES (
-                     #{userNickname},
-                     #{userRank},
-                     #{userMost1},
-                     #{userMost2},
-                     #{userMost3},
-                     #{joinCategory},
-                     #{joinMessage}
-                 )
+             #{userNickname},
+             #{userRank},
+             #{userMost1},
+             #{userMost2},
+             #{userMost3},
+             #{joinCategory},
+             #{joinMessage}
+         )
     </insert>
 </mapper>

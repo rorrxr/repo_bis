@@ -76,7 +76,7 @@
                             </div>
                             <!-- 구인 형태 -->
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="joinCategory" name="joinCategory" required>
+                                <select class="form-select" id="join_category" name="join_category" required>
                                     <option value="1">일반</option>
                                     <option value="2">랭크</option>
                                     <option value="3">코발트</option>
@@ -86,18 +86,16 @@
 
                             <!-- 메시지 -->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="joinMessage" name="joinMessage" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                <textarea class="form-control" id="join_message" name="join_message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
                                 <label for="joinMessage">메시지</label>
                             </div>
 
-<!--
-                            <input class="form-control" id="delYn" name="delYn" type="hidden"/>
-                            <input class="form-control" id="createDate" name="createDate" type="hidden"/>
--->
+<!--                            <input class="form-control" id="delYn" name="delYn" type="hidden"/>-->
+<!--                            <input class="form-control" id="createDate" name="createDate" type="hidden"/>-->
 
                             <!-- Submit Button-->
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">등록</button>
+                                <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">등록</button>
                             </div>
                         </form>
 
@@ -137,13 +135,14 @@
     let goUrlXdmInst = "/contact";
 
     document.getElementById("btnSubmit").onclick = function () {
-        if(validationInst() == false){  // 밸리데이션 체크
-            return false;
-        } else {
-            form.action = goUrlXdmInst;
-            form.submit();
-
-        }
+        // if(validationInst() == false){  // 밸리데이션 체크
+        //     return false;
+        // } else {
+        //
+        //
+        // }
+        form.action = goUrlXdmInst;
+        form.submit();
     }
 </script>
 </body>
