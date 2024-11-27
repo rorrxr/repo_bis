@@ -46,6 +46,10 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <form id="contactForm" method="post">
+                            <!-- 숨겨진 필드 (자동 처리)-->
+                            <input class="form-control" id="createDate" name="createDate" type="hidden" /> <!-- 예시: 현재 날짜 -->
+                            <input class="form-control" id="delYn" name="delYn" type="hidden"/> <!-- 예시: 기본값 'N' -->
+
                             <!-- 닉네임-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="userNickname" name="userNickname" type="text" placeholder="Enter your name..." required />
@@ -77,21 +81,19 @@
                             <!-- 구인 형태 -->
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="join_category" name="join_category" required>
-                                    <option value="1">일반</option>
-                                    <option value="2">랭크</option>
-                                    <option value="3">코발트</option>
+                                    <option value="일반">일반</option>
+                                    <option value="랭크">랭크</option>
+                                    <option value="코발트">코발트</option>
                                 </select>
-                                <label for="joinCategory">구인 형태(일반/랭크)</label>
+                                <label for="join_category">구인 형태(일반/랭크)</label>
                             </div>
 
                             <!-- 메시지 -->
                             <div class="form-floating mb-3">
                                 <textarea class="form-control" id="join_message" name="join_message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
-                                <label for="joinMessage">메시지</label>
+                                <label for="join_message">메시지</label>
                             </div>
 
-<!--                            <input class="form-control" id="delYn" name="delYn" type="hidden"/>-->
-<!--                            <input class="form-control" id="createDate" name="createDate" type="hidden"/>-->
 
                             <!-- Submit Button-->
                             <div class="d-grid">
@@ -135,12 +137,6 @@
     let goUrlXdmInst = "/contact";
 
     document.getElementById("btnSubmit").onclick = function () {
-        // if(validationInst() == false){  // 밸리데이션 체크
-        //     return false;
-        // } else {
-        //
-        //
-        // }
         form.action = goUrlXdmInst;
         form.submit();
     }

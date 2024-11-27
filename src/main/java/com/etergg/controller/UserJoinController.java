@@ -5,9 +5,9 @@ import com.etergg.dto.UserJoinResponseDto;
 import com.etergg.service.UserJoinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,15 +16,31 @@ public class UserJoinController {
     @Autowired
     private UserJoinService userJoinservice;
 
-    @GetMapping("/resume")
-    @ResponseBody
-    public List<UserJoinResponseDto> getAllPosts() {
-        return userJoinservice.getAllPosts();
-    }
+//    @GetMapping("/resume")
+//    @ResponseBody
+//    public List<UserJoinResponseDto> getAllPosts() {
+//        return userJoinservice.getAllPosts();
+//    }
 
     // 게시글 작성
+//    @PostMapping("/contact")
+//    public UserJoinResponseDto createPost(@ModelAttribute UserJoinRequestDto requestDto) {
+//        return userJoinservice.save(requestDto);
+//    }
+
     @PostMapping("/contact")
-    public UserJoinResponseDto createPost(@ModelAttribute UserJoinRequestDto requestDto) {
+    public UserJoinResponseDto createPost(@RequestBody UserJoinRequestDto requestDto) {
+
+        System.out.println("userNickname: " + requestDto.getUserNickname());
+        System.out.println("userRank: " + requestDto.getUserRank());
+        System.out.println("userMost1: " + requestDto.getUserMost1());
+        System.out.println("userMost2: " + requestDto.getUserMost2());
+        System.out.println("userMost3: " + requestDto.getUserMost3());
+        System.out.println("joinCategory: " + requestDto.getJoinCategory());
+        System.out.println("joinMessage: " + requestDto.getJoinMessage());
+        System.out.println("delYn: " + requestDto.getDelYn());
+        System.out.println("createDate: " + requestDto.getCreateDate());
+
         return userJoinservice.save(requestDto);
     }
 

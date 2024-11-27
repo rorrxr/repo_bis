@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +21,10 @@ public class UserJoinResponseDto {
     private String userMost2;
     private String userMost3;
 
-    private Integer joinCategory;
+    private String joinCategory;
     private String joinMessage;
-//    private Boolean delYn;
-//    private String createDate;
+    private String delYn;
+    private LocalDateTime createDate;
 
     public UserJoinResponseDto(UserJoin userJoin) {
         this.id = userJoin.getId();
@@ -33,8 +35,8 @@ public class UserJoinResponseDto {
         this.userMost3 = userJoin.getUserMost3();
         this.joinCategory = userJoin.getJoinCategory();
         this.joinMessage = userJoin.getJoinMessage();
-//        this.delYn = userJoin.getDelYn();
-//        this.createDate = userJoin.getCreateDate();
+        this.delYn = userJoin.getDelYn();
+        this.createDate = userJoin.getCreateDate();
     }
 
 }
