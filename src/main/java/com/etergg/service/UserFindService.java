@@ -17,23 +17,25 @@ public class UserFindService {
 
     private final UserRepository userRepository;
 
+
+
     /**
      * 게시글 수정
      */
 
     @Transactional
     public UserJoinResponseDto update(Long id, UserJoinRequestDto requestDto) {
-        // 게시글을 ID로 찾아서 수정
-        User userJoin = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        // DB에서 수정할 사용자 조회
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
 
-        // 게시글 수정
-        userJoin.update(requestDto);
+        // 엔티티에서 update 메소드 호출하여 수정
+        user.update(requestDto);
 
-        // 수정된 게시글 저장
-//        marketRepository.save(market);
+        // 수정된 사용자 저장
+        userRepository.save(user);
 
-        return new UserJoinResponseDto(userJoin);
+        // 수정된 데이터를 DTO로 반환
+        return new UserJoinResponseDto(user);
     }
 
     @Transactional
@@ -56,6 +58,8 @@ public class UserFindService {
                 .map(UserJoinResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+
 
     // 특정 게시글 조회
 //    public UserJoinResponseDto getPostById(Long id) {

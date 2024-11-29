@@ -26,6 +26,8 @@ public class UserJoinResponseDto {
     private String delYn;
     private LocalDateTime createDate;
 
+    private UserJoinResponseDto userRepository;
+
     public UserJoinResponseDto(User userJoin) {
         this.id = userJoin.getId();
         this.userNickname = userJoin.getUserNickname();

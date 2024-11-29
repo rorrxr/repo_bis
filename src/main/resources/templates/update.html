@@ -23,55 +23,56 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
         <div class="container px-5">
-            <a class="navbar-brand" th:href="@{/}"><span class="fw-bolder text-primary">ER community</span></a>
+            <a class="navbar-brand" href="/"><span class="fw-bolder text-primary">ER community</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                    <li class="nav-item"><a class="nav-link" th:href="@{/}" >메인</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/join}">구인 등록</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/find}">구인 찾기</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">메인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/join">구인 등록</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/find">구인 찾기</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- Page content-->
     <section class="py-5">
         <div class="container px-5">
-            <!-- Contact form-->
+            <!-- Edit form-->
             <div class="bg-light rounded-4 py-5 px-4 px-md-5">
                 <div class="text-center mb-5">
-                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                    <h1 class="fw-bolder">구인 등록</h1>
-                    <p class="lead fw-normal text-muted mb-0">듀오/스쿼드 깐부를 구해봐요!</p>
+                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-pencil-square"></i></div>
+                    <h1 class="fw-bolder">구인 수정</h1>
+                    <p class="lead fw-normal text-muted mb-0">듀오/스쿼드 깐부를 구하는 구인글을 수정해요!</p>
                 </div>
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
-                        <form id="contactForm" name = "contactForm" method="post">
-                            <!-- 숨겨진 필드 (자동 처리)-->
-                            <input class="form-control" id="createDate" name="createDate" type="hidden" /> <!-- 예시: 현재 날짜 -->
-                            <input class="form-control" id="delYn" name="delYn" type="hidden"/> <!-- 예시: 기본값 'N' -->
+                        <form id="editForm" name="editForm" method="post">
+                            <input type="hidden" id="postId" name="postId" />
 
                             <!-- 닉네임-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="userNickname" name="userNickname" type="text" placeholder="Enter your name..." required />
                                 <label for="userNickname">닉네임</label>
                             </div>
+
                             <!-- 티어-->
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="userRank" name="userRank" required>
-                                    <option value="아이언">아이언</option>
-                                    <option value="브론즈">브론즈</option>
-                                    <option value="실버">실버</option>
-                                    <option value="골드">골드</option>
-                                    <option value="플레티넘">플레티넘</option>
-                                    <option value="다이아몬드">다이아몬드</option>
-                                    <option value="메테오라이트">메테오라이트</option>
-                                    <option value="미스릴">미스릴</option>
-                                    <option value="데미갓">데미갓</option>
-                                    <option value="이터니티">이터니티</option>
+                                    <option value="1">아이언</option>
+                                    <option value="2">브론즈</option>
+                                    <option value="3">실버</option>
+                                    <option value="4">골드</option>
+                                    <option value="5">플레티넘</option>
+                                    <option value="6">다이아몬드</option>
+                                    <option value="7">메테오라이트</option>
+                                    <option value="8">미스릴</option>
+                                    <option value="9">데미갓</option>
+                                    <option value="10">이터니티</option>
                                 </select>
                                 <label for="userRank">티어</label>
                             </div>
+
                             <!-- 모스트-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="userMost1" name="userMost1" type="text" placeholder="Enter your most..." required />
@@ -79,46 +80,35 @@
                                 <input class="form-control" id="userMost3" name="userMost3" type="text" placeholder="Enter your most..." />
                                 <label for="userMost1">모스트</label>
                             </div>
+
                             <!-- 구인 형태 -->
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="join_category" name="joinCategory" required>
+                                <select class="form-select" id="joinCategory" name="joinCategory" required>
                                     <option value="일반" selected>일반</option>
                                     <option value="랭크">랭크</option>
                                     <option value="코발트">코발트</option>
                                 </select>
-                                <label for="join_category">구인 형태(일반/랭크)</label>
+                                <label for="joinCategory">구인 형태</label>
                             </div>
 
                             <!-- 메시지 -->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="join_message" name="joinMessage" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
-                                <label for="join_message">메시지</label>
+                                <textarea class="form-control" id="joinMessage" name="joinMessage" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                <label for="joinMessage">메시지</label>
                             </div>
-
 
                             <!-- Submit Button-->
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">등록</button>
+                                <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">수정</button>
                             </div>
                         </form>
-
-                        <!-- Success message-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                            </div>
-                        </div>
-
-                        <!-- Error message-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Error sending message!</div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
 <!-- Footer-->
 <footer class="bg-white py-4 mt-auto">
     <div class="container px-5">
@@ -127,52 +117,64 @@
         </div>
     </div>
 </footer>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 
 <script>
-    document.getElementById("btnSubmit").onclick = function (event) {
-        event.preventDefault(); // 기본 폼 제출 동작 방지
+    // 페이지 로딩 후 수정할 게시글의 데이터를 받아오는 함수
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');  // URL에서 'id' 파라미터를 추출
 
-        // form 요소 선택 확인
-        let form = document.querySelector("form[name=contactForm]");
+        fetch(`/find/${postId}`)
+            .then(response => response.json())
+            .then(post => {
+                // 폼에 데이터를 채워넣기
+                document.getElementById('postId').value = post.id;
+                document.getElementById('userNickname').value = post.userNickname;
+                document.getElementById('userRank').value = post.userRank;
+                document.getElementById('userMost1').value = post.userMost1;
+                document.getElementById('userMost2').value = post.userMost2;
+                document.getElementById('userMost3').value = post.userMost3;
+                document.getElementById('joinCategory').value = post.joinCategory;
+                document.getElementById('joinMessage').value = post.joinMessage;
+            })
+            .catch(error => console.error('Error loading post data:', error));
+    });
 
-        // form이 null인 경우를 체크
-        if (!form) {
-            console.error("Form element not found!");
-            alert("폼을 찾을 수 없습니다.");
-            return;
-        }
+    // 수정된 내용 제출 처리
+    document.getElementById("editForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // 기본 폼 제출 방지
 
-        // FormData를 JSON으로 변환
-        let formData = new FormData(form);
+        const formData = new FormData(this);
 
-        // FormData를 JSON으로 변환
-        let jsonData = {};
-        formData.forEach(function(value, key) {
-            jsonData[key] = value;
-        });
-
-        console.log(jsonData);  // 데이터를 콘솔에서 확인해 보세요.
-
-        fetch("/join", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" }, // JSON 형식으로 보내기
-            body: JSON.stringify(jsonData), // JSON으로 변환된 데이터 전송
-        }).then(response => {
-            if (response.ok) {
-                alert("등록 성공!");
-            } else {
-                alert("등록 실패!");
+        fetch(`/find/${formData.get("postId")}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                postId: formData.get("postId"),
+                userNickname: formData.get("userNickname"),
+                userRank: formData.get("userRank"),
+                userMost1: formData.get("userMost1"),
+                userMost2: formData.get("userMost2"),
+                userMost3: formData.get("userMost3"),
+                joinCategory: formData.get("joinCategory"),
+                joinMessage: formData.get("joinMessage")
+            }),
+            headers: {
+                'Content-Type': 'application/json'
             }
-        }).catch(error => {
-            console.error("Error:", error);
-            alert("오류 발생!");
-        });
-    };
-
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert('게시글이 수정되었습니다.');
+                window.location.href = `/find/${formData.get("postId")}`; // 수정 후 해당 게시글 보기
+            })
+            .catch(error => {
+                console.error('Error updating post:', error);
+                alert('게시글 수정에 실패했습니다.');
+            });
+    });
 </script>
 </body>
 </html>

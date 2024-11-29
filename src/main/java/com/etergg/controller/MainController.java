@@ -22,9 +22,9 @@ public class MainController {
         return "find";
     }
 
-    // 구인 찾기
-//    @GetMapping("/resume")
-//    public String resume(){
-//        return "resume";
-//    }
+    @GetMapping("/update")
+    public String update(){
+        return "update";
+    }
+
 }
