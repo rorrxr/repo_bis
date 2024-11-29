@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Table(name = "userjoin")
-public class UserJoin {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +55,7 @@ public class UserJoin {
 //        this.delYn = this.delYn == null ? "N" : this.delYn;
 //    }
 
-    public UserJoin(UserJoinRequestDto requestDto) {
+    public User(UserJoinRequestDto requestDto) {
         this.userNickname = requestDto.getUserNickname();
         this.userRank = requestDto.getUserRank();
         this.userMost1 = requestDto.getUserMost1();
@@ -64,6 +64,30 @@ public class UserJoin {
         this.joinCategory = requestDto.getJoinCategory();  // joinCategory 값이 null이 아니어야 함
         this.joinMessage = requestDto.getJoinMessage();
         this.delYn = "N"; // 기본값
+        this.createDate = LocalDateTime.now();
+    }
+
+    public void update(UserJoinRequestDto requestDto) {
+        this.userNickname = requestDto.getUserNickname();
+        this.userRank = requestDto.getUserRank();
+        this.userMost1 = requestDto.getUserMost1();
+        this.userMost2 = requestDto.getUserMost2();
+        this.userMost3 = requestDto.getUserMost3();
+        this.joinCategory = requestDto.getJoinCategory();  // joinCategory 값이 null이 아니어야 함
+        this.joinMessage = requestDto.getJoinMessage();
+        this.delYn = "N"; // 기본값
+        this.createDate = LocalDateTime.now();
+    }
+
+    public void delete(UserJoinRequestDto requestDto) {
+        this.userNickname = requestDto.getUserNickname();
+        this.userRank = requestDto.getUserRank();
+        this.userMost1 = requestDto.getUserMost1();
+        this.userMost2 = requestDto.getUserMost2();
+        this.userMost3 = requestDto.getUserMost3();
+        this.joinCategory = requestDto.getJoinCategory();  // joinCategory 값이 null이 아니어야 함
+        this.joinMessage = requestDto.getJoinMessage();
+        this.delYn = "Y"; // 기본값
         this.createDate = LocalDateTime.now();
     }
 

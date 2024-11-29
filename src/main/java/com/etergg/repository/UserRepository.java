@@ -1,9 +1,9 @@
 package com.etergg.repository;
 
-import com.etergg.entity.UserJoin;
+import com.etergg.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserJoinRepository extends JpaRepository<UserJoin, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }

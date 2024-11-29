@@ -1,6 +1,6 @@
 package com.etergg.dto;
 
-import com.etergg.entity.UserJoin;
+import com.etergg.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class UserJoinResponseDto {
     private String delYn;
     private LocalDateTime createDate;
 
-    public UserJoinResponseDto(UserJoin userJoin) {
+    public UserJoinResponseDto(User userJoin) {
         this.id = userJoin.getId();
         this.userNickname = userJoin.getUserNickname();
         this.userRank = userJoin.getUserRank();
