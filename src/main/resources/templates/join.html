@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
@@ -27,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}" >메인</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/contact}">구인 등록</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/join}">구인 등록</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/resume}">구인 찾기</a></li>
                 </ul>
             </div>
@@ -45,7 +46,7 @@
                 </div>
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
-                        <form id="contactForm" method="post">
+                        <form id="contactForm" name = "contactForm" method="post">
                             <!-- 숨겨진 필드 (자동 처리)-->
                             <input class="form-control" id="createDate" name="createDate" type="hidden" /> <!-- 예시: 현재 날짜 -->
                             <input class="form-control" id="delYn" name="delYn" type="hidden"/> <!-- 예시: 기본값 'N' -->
@@ -80,8 +81,8 @@
                             </div>
                             <!-- 구인 형태 -->
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="join_category" name="join_category" required>
-                                    <option value="일반">일반</option>
+                                <select class="form-select" id="join_category" name="joinCategory" required>
+                                    <option value="일반" selected>일반</option>
                                     <option value="랭크">랭크</option>
                                     <option value="코발트">코발트</option>
                                 </select>
@@ -90,7 +91,7 @@
 
                             <!-- 메시지 -->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="join_message" name="join_message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                <textarea class="form-control" id="join_message" name="joinMessage" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
                                 <label for="join_message">메시지</label>
                             </div>
 
@@ -130,16 +131,48 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
+
 <script>
+    document.getElementById("btnSubmit").onclick = function (event) {
+        event.preventDefault(); // 기본 폼 제출 동작 방지
 
-    let form = document.querySelector("form[name=contactForm]");
+        // form 요소 선택 확인
+        let form = document.querySelector("form[name=contactForm]");
 
-    let goUrlXdmInst = "/contact";
+        // form이 null인 경우를 체크
+        if (!form) {
+            console.error("Form element not found!");
+            alert("폼을 찾을 수 없습니다.");
+            return;
+        }
 
-    document.getElementById("btnSubmit").onclick = function () {
-        form.action = goUrlXdmInst;
-        form.submit();
-    }
+        // FormData를 JSON으로 변환
+        let formData = new FormData(form);
+
+        // FormData를 JSON으로 변환
+        let jsonData = {};
+        formData.forEach(function(value, key) {
+            jsonData[key] = value;
+        });
+
+        console.log(jsonData);  // 데이터를 콘솔에서 확인해 보세요.
+
+        fetch("/join", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }, // JSON 형식으로 보내기
+            body: JSON.stringify(jsonData), // JSON으로 변환된 데이터 전송
+        }).then(response => {
+            if (response.ok) {
+                alert("등록 성공!");
+            } else {
+                alert("등록 실패!");
+            }
+        }).catch(error => {
+            console.error("Error:", error);
+            alert("오류 발생!");
+        });
+    };
+
 </script>
 </body>
 </html>

@@ -28,7 +28,7 @@ public class UserJoinController {
 //        return userJoinservice.save(requestDto);
 //    }
 
-    @PostMapping("/contact")
+    @PostMapping("/join")
     public UserJoinResponseDto createPost(@RequestBody UserJoinRequestDto requestDto) {
 
         System.out.println("userNickname: " + requestDto.getUserNickname());

@@ -3,21 +3,23 @@ package com.etergg.entity;
 import com.etergg.dto.UserJoinRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "userjoin")
 public class UserJoin {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -42,12 +44,16 @@ public class UserJoin {
     private String joinMessage;
 
     @Column(nullable = false)
-    private String delYn = "N";
+    private String delYn;
 
-//    @Column(name = "created_date")
-    @CreatedDate
+    @CreationTimestamp // Hibernate에서 생성 타임스탬프 자동 설정
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createDate;
-//    private String createDate;
+
+//    @PrePersist
+//    private void prePersist() {
+//        this.delYn = this.delYn == null ? "N" : this.delYn;
+//    }
 
     public UserJoin(UserJoinRequestDto requestDto) {
         this.userNickname = requestDto.getUserNickname();

@@ -11,9 +11,9 @@ public class MainController {
     }
 
     // 구인 등록
-    @GetMapping("/contact")
+    @GetMapping("/join")
     public String contact(){
-        return "contact";
+        return "join";
     }
 
     // 구인 찾기
