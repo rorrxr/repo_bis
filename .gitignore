@@ -36,6 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
+!**/src/main/resources/static/css
+!**/src/main/resources/static/assets
+!**/src/main/resources/static/js
 
 application.properties
 application-KEY.properties
