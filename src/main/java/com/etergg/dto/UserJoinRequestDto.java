@@ -18,7 +18,7 @@ public class UserJoinRequestDto {
     private String userNickname;
 
     @NotNull
-    private Integer userRank;
+    private String userRank;
 
     @NotBlank
     private String userMost1;

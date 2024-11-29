@@ -26,7 +26,7 @@ public class User {
     private String userNickname;
 
     @Column(nullable = false)
-    private Integer userRank;
+    private String userRank;
 
     @Column(nullable = false)
     private String userMost1;

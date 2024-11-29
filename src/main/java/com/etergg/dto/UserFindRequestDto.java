@@ -7,7 +7,7 @@ public class UserFindRequestDto {
 
     private String userNickname;
 
-    private Integer userRank;
+    private String userRank;
 
     private String userMost1;
     private String userMost2;
