@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -68,16 +68,16 @@
 <script src="js/scripts.js"></script>
 
 <script>
-    // Fetching the list of posts from the API
+    // 게시글 목록을 가져오는 코드
     document.addEventListener('DOMContentLoaded', function() {
         fetch('/finds')
             .then(response => response.json())
             .then(posts => {
                 const postsList = document.getElementById('posts-list');
-                postsList.innerHTML = ''; // Clear the content initially
+                postsList.innerHTML = ''; // 콘텐츠 초기화
 
                 posts.forEach(post => {
-                    // Create the card for each post
+                    // 각 게시물 카드 생성
                     const postCard = document.createElement('div');
                     postCard.classList.add('col-lg-11', 'col-xl-9', 'col-xxl-8', 'mb-5');
 
@@ -97,6 +97,11 @@
                                             <div>${post.joinMessage}</div>
                                         </div>
                                     </div>
+                                    <!-- 수정 및 삭제 버튼 추가 -->
+                                    <div class="mt-3">
+                                        <a href="/join?id=${post.id}" class="btn btn-warning btn-sm">수정</a>
+                                        <button class="btn btn-danger btn-sm" onclick="deletePost(${post.id})">삭제</button>
+                                    </div>
                                 </div>
                             </div>
                         `;
@@ -105,6 +110,21 @@
             })
             .catch(error => console.error('Error fetching posts:', error));
     });
+
+    // 게시물 삭제 함수
+    function deletePost(id) {
+        if (confirm("정말 이 게시물을 삭제하시겠습니까?")) {
+            fetch(`/find/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("게시물이 삭제되었습니다.");
+                    location.reload();  // 페이지 새로고침하여 변경된 내용 반영
+                })
+                .catch(error => console.error('Error deleting post:', error));
+        }
+    }
 </script>
 </body>
 </html>
