@@ -2,10 +2,8 @@ package com.etergg.controller;
 
 import com.etergg.dto.UserJoinRequestDto;
 import com.etergg.dto.UserJoinResponseDto;
-import com.etergg.entity.User;
 import com.etergg.service.UserFindService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,32 +20,32 @@ public class UserFindController {
         return userFindService.getAllPosts();
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<User> getPostById(@PathVariable Long id) {
-        User post = userFindService.getPostById(id);
-        if (post == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(post);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updatePost(@PathVariable Long id, @RequestBody UserJoinRequestDto requestDto) {
-        User post = userFindService.update(id, requestDto);
-        if (post == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(post);
-    }
+//    @GetMapping("/find/{id}")
+//    public ResponseEntity<User> getPostById(@PathVariable Long id) {
+//        User post = userFindService.getPostById(id);
+//        if (post == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(post);
+//    }
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<User> updatePost(@PathVariable Long id, @RequestBody UserJoinRequestDto requestDto) {
+//        User post = userFindService.update(id, requestDto);
+//        if (post == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(post);
+//    }
 
     // 게시글 수정
-//    @PutMapping("/find/{id}")
-//    public UserJoinResponseDto updatePost(@PathVariable Long id, @RequestBody UserJoinRequestDto requestDto) {
-//        // 수정할 게시글 ID와 데이터를 받아서 처리
-//        System.out.println("Updating post with ID: " + id);
-//
-//        return userFindService.update(id, requestDto); // 수정된 내용을 반환
-//    }
+    @PostMapping("/update/{id}")
+    public UserJoinResponseDto updatePost(@PathVariable Long id, @RequestBody UserJoinRequestDto requestDto) {
+        System.out.println("Updating post with ID: " + id);
+        UserJoinResponseDto updatedPost = userFindService.update(id, requestDto); // 수정된 게시글
+        return updatedPost;
+    }
+
 
 
      // 게시글 삭제

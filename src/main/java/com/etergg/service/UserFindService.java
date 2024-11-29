@@ -51,21 +51,23 @@ public class UserFindService {
         return "게시글 삭제 완료";
     }
 
-    // 모든 게시글 조회
+    /**
+     * 모든 게시글 조회
+     */
     public List<UserJoinResponseDto> getAllPosts() {
-        List<User> userJoin = userRepository.findAll();
-        return userJoin.stream()
+        List<User> users = userRepository.findAll();
+        return users.stream()
                 .map(UserJoinResponseDto::new)
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 특정 게시글 조회
+     */
+    public UserJoinResponseDto getPostById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
-
-    // 특정 게시글 조회
-//    public UserJoinResponseDto getPostById(Long id) {
-//        Userjoin userjoin = userjoinRepository.findById(id)
-//                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
-//
-//        return new MarketResponseDto(market);
-//    }
+        return new UserJoinResponseDto(user);
+    }
 }

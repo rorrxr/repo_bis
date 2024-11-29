@@ -6,21 +6,16 @@
     <meta name="description" content />
     <meta name="author" content />
     <title>이터널리턴 커뮤니티 - ER community</title>
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Custom Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-    <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
         <div class="container px-5">
             <a class="navbar-brand" href="/"><span class="fw-bolder text-primary">ER community</span></a>
@@ -35,10 +30,8 @@
         </div>
     </nav>
 
-    <!-- Page content-->
     <section class="py-5">
         <div class="container px-5">
-            <!-- Edit form-->
             <div class="bg-light rounded-4 py-5 px-4 px-md-5">
                 <div class="text-center mb-5">
                     <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-pencil-square"></i></div>
@@ -48,34 +41,37 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <form id="editForm" name="editForm" method="post">
-                            <input type="hidden" id="postId" name="postId" />
+                            <!-- ID 숨기기 -->
+                            <input type="hidden" id="id" name="id" />
 
-                            <!-- 닉네임-->
+                            <!-- 닉네임 -->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="userNickname" name="userNickname" type="text" placeholder="Enter your name..." required />
                                 <label for="userNickname">닉네임</label>
                             </div>
 
+                            <!-- 티어 -->
+
                             <!-- 티어-->
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="userRank" name="userRank" required>
-                                    <option value="1">아이언</option>
-                                    <option value="2">브론즈</option>
-                                    <option value="3">실버</option>
-                                    <option value="4">골드</option>
-                                    <option value="5">플레티넘</option>
-                                    <option value="6">다이아몬드</option>
-                                    <option value="7">메테오라이트</option>
-                                    <option value="8">미스릴</option>
-                                    <option value="9">데미갓</option>
-                                    <option value="10">이터니티</option>
+                                    <option value="아이언" >아이언</option>
+                                    <option value="브론즈">브론즈</option>
+                                    <option value="실버" >실버</option>
+                                    <option value="골드" >골드</option>
+                                    <option value="플레티넘" >플레티넘</option>
+                                    <option value="다이아몬드" >다이아몬드</option>
+                                    <option value="메테오라이트">메테오라이트</option>
+                                    <option value="미스릴" >미스릴</option>
+                                    <option value="데미갓" >데미갓</option>
+                                    <option value="이터니티" >이터니티</option>
                                 </select>
                                 <label for="userRank">티어</label>
                             </div>
 
-                            <!-- 모스트-->
+                            <!-- 모스트 -->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="userMost1" name="userMost1" type="text" placeholder="Enter your most..." required />
+                                <input class="form-control" id="userMost1" name="userMost1" type="text" placeholder="Enter your most..." required  />
                                 <input class="form-control" id="userMost2" name="userMost2" type="text" placeholder="Enter your most..." />
                                 <input class="form-control" id="userMost3" name="userMost3" type="text" placeholder="Enter your most..." />
                                 <label for="userMost1">모스트</label>
@@ -83,9 +79,9 @@
 
                             <!-- 구인 형태 -->
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="joinCategory" name="joinCategory" required>
-                                    <option value="일반" selected>일반</option>
-                                    <option value="랭크">랭크</option>
+                                <select class="form-select" id="joinCategory" name="joinCategory" required >
+                                    <option value="일반">일반</option>
+                                    <option value="랭크" >랭크</option>
                                     <option value="코발트">코발트</option>
                                 </select>
                                 <label for="joinCategory">구인 형태</label>
@@ -102,6 +98,7 @@
                                 <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">수정</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -109,7 +106,6 @@
     </section>
 </main>
 
-<!-- Footer-->
 <footer class="bg-white py-4 mt-auto">
     <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
@@ -118,61 +114,69 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // 페이지 로딩 후 수정할 게시글의 데이터를 받아오는 함수
-    document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');  // URL에서 'id' 파라미터를 추출
+    // 서버에서 데이터를 불러와 폼 필드에 값을 채워 넣는 함수
+    window.onload = function() {
+        // URL에서 id 값 추출
+        const postId = new URLSearchParams(window.location.search).get('id');
 
-        fetch(`/find/${postId}`)
-            .then(response => response.json())
-            .then(post => {
-                // 폼에 데이터를 채워넣기
-                document.getElementById('postId').value = post.id;
-                document.getElementById('userNickname').value = post.userNickname;
-                document.getElementById('userRank').value = post.userRank;
-                document.getElementById('userMost1').value = post.userMost1;
-                document.getElementById('userMost2').value = post.userMost2;
-                document.getElementById('userMost3').value = post.userMost3;
-                document.getElementById('joinCategory').value = post.joinCategory;
-                document.getElementById('joinMessage').value = post.joinMessage;
-            })
-            .catch(error => console.error('Error loading post data:', error));
-    });
-
-    // 수정된 내용 제출 처리
-    document.getElementById("editForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // 기본 폼 제출 방지
-
-        const formData = new FormData(this);
-
-        fetch(`/find/${formData.get("postId")}`, {
-            method: 'PUT',
-            body: JSON.stringify({
-                postId: formData.get("postId"),
-                userNickname: formData.get("userNickname"),
-                userRank: formData.get("userRank"),
-                userMost1: formData.get("userMost1"),
-                userMost2: formData.get("userMost2"),
-                userMost3: formData.get("userMost3"),
-                joinCategory: formData.get("joinCategory"),
-                joinMessage: formData.get("joinMessage")
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        // 서버에서 게시글 데이터 가져오기
+        fetch(`/finds/${postId}`)
             .then(response => response.json())
             .then(data => {
-                alert('게시글이 수정되었습니다.');
-                window.location.href = `/find/${formData.get("postId")}`; // 수정 후 해당 게시글 보기
+                console.log(data);  // 응답 데이터를 콘솔에 출력해 봅니다.
+                document.getElementById('id').value = data.id;
+                document.getElementById('userNickname').value = data.userNickname;
+                document.getElementById('userRank').value = data.userRank;
+                document.getElementById('userMost1').value = data.userMost1;
+                document.getElementById('userMost2').value = data.userMost2;
+                document.getElementById('userMost3').value = data.userMost3;
+                document.getElementById('joinCategory').value = data.joinCategory;
+                document.getElementById('joinMessage').value = data.joinMessage;
+            })
+            .catch(error => {
+                console.error('Error fetching post data:', error);
+                alert('게시글을 불러오는 데 실패했습니다.');
+            });
+
+    };
+
+
+    // 폼 제출 처리
+    document.getElementById("editForm").addEventListener("submit", function(event) {
+        event.preventDefault();  // 기본 폼 제출 동작을 방지
+
+        // 폼 데이터 수집
+        const formData = new FormData(this);
+        const formDataObj = {
+            id: formData.get("id"),
+            userNickname: formData.get("userNickname"),
+            userRank: formData.get("userRank"),
+            userMost1: formData.get("userMost1"),
+            userMost2: formData.get("userMost2"),
+            userMost3: formData.get("userMost3"),
+            joinCategory: formData.get("joinCategory"),
+            joinMessage: formData.get("joinMessage")
+        };
+
+        // 서버에 POST 요청 보내기
+        fetch(`/update/${formDataObj.id}`, {
+            method: 'POST',  // PUT을 POST로 변경
+            body: JSON.stringify(formDataObj),  // 데이터는 JSON 형식으로 전송
+            headers: {
+                'Content-Type': 'application/json'  // JSON 형식으로 요청을 보낸다고 명시
+            }
+        })
+            .then(response => response.json())  // 서버 응답 처리
+            .then(data => {
+                alert('게시글이 수정되었습니다.');  // 수정 완료 후 알림
+                window.location.reload();  // 페이지 리로드하여 수정된 게시글 반영
             })
             .catch(error => {
                 console.error('Error updating post:', error);
-                alert('게시글 수정에 실패했습니다.');
+                alert('게시글 수정에 실패했습니다.');  // 수정 실패 시 알림
             });
     });
 </script>
