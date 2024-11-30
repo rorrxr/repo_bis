@@ -14,7 +14,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+            background: linear-gradient(to top right, #b5d692 0%, #a3cca3 100%);
         }
 
         .input-form {
@@ -33,7 +33,21 @@
 </head>
 
 <body>
+
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
+        <div class="container px-5">
+            <a class="navbar-brand" th:href="@{/}"><span class="fw-bolder text-primary">ER community</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}" >메인</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/join}">구인 등록</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/find}">구인 찾기</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12 mx-auto">
             <h4 class="mb-3">회원가입</h4>
@@ -46,9 +60,9 @@
                         <div class="invalid-feedback">이름을 입력해주세요.</div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="nickname">별명</label>
+                        <label for="nickname">닉네임</label>
                         <input type="text" class="form-control" id="nickname" placeholder="별명을 입력해주세요." required>
-                        <div class="invalid-feedback">별명을 입력해주세요.</div>
+                        <div class="invalid-feedback">닉네임을 입력해주세요.</div>
                     </div>
                 </div>
 
@@ -83,7 +97,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="sample6_detailAddress">상세주소 <span class="text-muted">(필수 아님)</span></label>
+                    <label for="sample6_detailAddress">상세주소</label>
                     <input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요.">
                 </div>
 
