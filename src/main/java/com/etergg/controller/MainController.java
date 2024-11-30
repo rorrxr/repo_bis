@@ -22,9 +22,17 @@ public class MainController {
         return "find";
     }
 
+    // 등록된 구인 게시글 수정
     @GetMapping("/update")
     public String update(){
         return "update";
     }
 
+    // 회원가입
+    @GetMapping("/singup")
+    public String singup(){
+        return "singup";
+    }
+
+    // 로그인
 }
