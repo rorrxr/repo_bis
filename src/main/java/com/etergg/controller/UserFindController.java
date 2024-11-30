@@ -2,8 +2,11 @@ package com.etergg.controller;
 
 import com.etergg.dto.UserJoinRequestDto;
 import com.etergg.dto.UserJoinResponseDto;
+import com.etergg.entity.User;
 import com.etergg.service.UserFindService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +49,24 @@ public class UserFindController {
         return updatedPost;
     }
 
+    //    @PutMapping("/{id}")
+//    public ResponseEntity<User> updatePost(@PathVariable Long id, @RequestBody UserJoinRequestDto requestDto) {
+//        User post = userFindService.update(id, requestDto);
+//        if (post == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(post);
+//    }
+
+    @GetMapping("/finds/{id}")
+    public ResponseEntity<User> getPost(@PathVariable Long id) {
+        User post = userFindService.findById(id);
+        if (post != null) {
+            return ResponseEntity.ok(post);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
 
 
      // 게시글 삭제

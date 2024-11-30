@@ -122,27 +122,37 @@
         // URL에서 id 값 추출
         const postId = new URLSearchParams(window.location.search).get('id');
 
+        if (postId === null) {
+            alert("잘못된 접근입니다.");
+            return;
+        }
+
         // 서버에서 게시글 데이터 가져오기
         fetch(`/finds/${postId}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);  // 응답 데이터를 콘솔에 출력해 봅니다.
+
+                if (!data || Object.keys(data).length === 0) {
+                    alert("게시글을 불러오는 데 실패했습니다.");
+                    return;
+                }
+
+                // 각 필드에 데이터 채우기
                 document.getElementById('id').value = data.id;
-                document.getElementById('userNickname').value = data.userNickname;
-                document.getElementById('userRank').value = data.userRank;
-                document.getElementById('userMost1').value = data.userMost1;
-                document.getElementById('userMost2').value = data.userMost2;
-                document.getElementById('userMost3').value = data.userMost3;
-                document.getElementById('joinCategory').value = data.joinCategory;
-                document.getElementById('joinMessage').value = data.joinMessage;
+                document.getElementById('userNickname').value = data.userNickname || '';
+                document.getElementById('userRank').value = data.userRank || '아이언';
+                document.getElementById('userMost1').value = data.userMost1 || '';
+                document.getElementById('userMost2').value = data.userMost2 || '';
+                document.getElementById('userMost3').value = data.userMost3 || '';
+                document.getElementById('joinCategory').value = data.joinCategory || '';
+                document.getElementById('joinMessage').value = data.joinMessage || '';
             })
             .catch(error => {
                 console.error('Error fetching post data:', error);
                 alert('게시글을 불러오는 데 실패했습니다.');
             });
-
     };
-
 
     // 폼 제출 처리
     document.getElementById("editForm").addEventListener("submit", function(event) {

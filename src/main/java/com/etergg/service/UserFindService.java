@@ -70,4 +70,8 @@ public class UserFindService {
 
         return new UserJoinResponseDto(user);
     }
+
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);  // userRepository를 통해 데이터베이스에서 사용자 조회
+    }
 }
